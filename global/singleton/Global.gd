@@ -1,10 +1,9 @@
 extends Node
 
-
-
 func save_data():
-	pass
+	print("save data")
 
 func save_and_exit():
 	save_data()
 	get_tree().quit()
+	

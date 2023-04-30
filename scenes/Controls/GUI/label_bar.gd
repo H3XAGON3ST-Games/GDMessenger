@@ -14,6 +14,5 @@ func _on_label_bar_gui_input(event):
 		OS.set_window_position(OS.window_position + get_local_mouse_position() - position)
 
 
-
-func _on_Button_pressed():
+func _on_button_exit_pressed():
 	Global.save_and_exit()
