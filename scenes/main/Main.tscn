@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/main/Main.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Controls/GUI/GUI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Controls/Server/Server.tscn" type="PackedScene" id=3]
+
+[node name="Main" type="Node"]
+script = ExtResource( 1 )
+client_scene = ExtResource( 2 )
+server_scene = ExtResource( 3 )

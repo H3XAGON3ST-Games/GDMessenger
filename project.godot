@@ -1,0 +1,57 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Object",
+"class": "PostgreSQLClient",
+"language": "GDScript",
+"path": "res://addons/postgreSQL/PostgreSQLClient.gd"
+} ]
+_global_script_class_icons={
+"PostgreSQLClient": ""
+}
+
+[application]
+
+config/name="Messenger"
+run/main_scene="res://scenes/main/Main.tscn"
+run/low_processor_mode=true
+boot_splash/show_image=false
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
+config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://global/singleton/Global.gd"
+
+[display]
+
+window/size/width=960
+window/size/height=540
+window/size/borderless=true
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[physics]
+
+common/enable_pause_aware_picking=true
+2d/thread_model=2
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+threads/thread_model=2
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+gles3/shaders/shader_compilation_mode=1
+environment/default_clear_color=Color( 0.141176, 0.141176, 0.176471, 1 )
+environment/default_environment="res://default_env.tres"

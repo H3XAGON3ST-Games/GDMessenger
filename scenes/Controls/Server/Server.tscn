@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/Controls/Server/Server.gd" type="Script" id=1]
+[ext_resource path="res://global/font/aileron/aileron.regular.otf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+
+[node name="Server" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="TextEdit" type="TextEdit" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/read_only = SubResource( 1 )
+text = "thrhhgkjedfglkejgkljehgglkg"
+readonly = true
+syntax_highlighting = true
+smooth_scrolling = true
