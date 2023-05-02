@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://scenes/Controls/GUI/label_bar.gd" type="Script" id=1]
 [ext_resource path="res://global/font/nunito/static/Nunito-Medium.ttf" type="DynamicFontData" id=2]
@@ -11,9 +11,10 @@
 [ext_resource path="res://scenes/Controls/GUI/GUI.gd" type="Script" id=9]
 [ext_resource path="res://scenes/Controls/GUI/login_password.gd" type="Script" id=10]
 [ext_resource path="res://scenes/Controls/GUI/main_container.gd" type="Script" id=11]
+[ext_resource path="res://scenes/Controls/GUI/options.gd" type="Script" id=12]
 
-[sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0, 0, 0, 0.231373 )
+[sub_resource type="StyleBoxFlat" id=35]
+bg_color = Color( 0.878431, 0.372549, 0.372549, 0.290196 )
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -38,6 +39,14 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 corner_detail = 4
 
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.0588235, 0.0588235, 0.0588235, 0.290196 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 4
+
 [sub_resource type="StyleBoxEmpty" id=25]
 
 [sub_resource type="StyleBoxFlat" id=24]
@@ -48,6 +57,26 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 corner_detail = 4
+
+[sub_resource type="StyleBoxEmpty" id=30]
+
+[sub_resource type="StyleBoxFlat" id=29]
+content_margin_left = 12.0
+bg_color = Color( 0.411765, 0.45098, 0.470588, 0.231373 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 3
+
+[sub_resource type="StyleBoxFlat" id=31]
+content_margin_left = 12.0
+bg_color = Color( 0.411765, 0.45098, 0.470588, 0.447059 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 3
 
 [sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0, 0, 0, 0.152941 )
@@ -61,13 +90,17 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="Theme" id=1]
 default_font = SubResource( 2 )
-Button/styles/disabled = SubResource( 5 )
+Button/styles/disabled = SubResource( 35 )
 Button/styles/focus = SubResource( 7 )
 Button/styles/hover = SubResource( 4 )
 Button/styles/normal = SubResource( 15 )
 Button/styles/pressed = SubResource( 5 )
 LineEdit/styles/focus = SubResource( 25 )
 LineEdit/styles/normal = SubResource( 24 )
+OptionButton/styles/focus = SubResource( 30 )
+OptionButton/styles/hover = SubResource( 29 )
+OptionButton/styles/normal = SubResource( 29 )
+OptionButton/styles/pressed = SubResource( 31 )
 Panel/styles/panel = SubResource( 8 )
 
 [sub_resource type="StyleBoxFlat" id=13]
@@ -193,6 +226,18 @@ tracks/10/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 26 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("name:rect_position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 107, 215 ) ]
 }
 
 [sub_resource type="Animation" id=18]
@@ -618,6 +663,11 @@ tracks/7/keys = {
 
 [sub_resource type="StyleBoxEmpty" id=9]
 
+[sub_resource type="InputEventAction" id=38]
+
+[sub_resource type="ShortCut" id=37]
+shortcut = SubResource( 38 )
+
 [sub_resource type="DynamicFont" id=14]
 size = 20
 use_filter = true
@@ -630,6 +680,234 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 corner_detail = 4
+
+[sub_resource type="Animation" id=32]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath(".:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../root_container/main_container/functional_menu/back/button_settings:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=33]
+resource_name = "off"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath(".:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -1, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../root_container/main_container/functional_menu/back/button_settings:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=34]
+resource_name = "on"
+tracks/0/type = "value"
+tracks/0/path = NodePath("../root_container/main_container/functional_menu/back/button_settings:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:modulate:r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:modulate:g")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath(".:modulate:b")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath(".:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -1, 0, 0, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="StyleBoxFlat" id=28]
+bg_color = Color( 0, 0, 0, 0.592157 )
+
+[sub_resource type="Shader" id=26]
+code = "shader_type canvas_item;
+
+render_mode blend_mix;
+
+uniform float size = 2;
+void fragment() {
+	vec2 uv = SCREEN_UV;
+	vec3 col = texture(SCREEN_TEXTURE, uv).xyz * 0.16;
+    col += texture(SCREEN_TEXTURE, uv + vec2(0.0, SCREEN_PIXEL_SIZE.y)).xyz * 0.15;
+    col += texture(SCREEN_TEXTURE, uv + vec2(0.0, -SCREEN_PIXEL_SIZE.y)).xyz * 0.15;
+    col += texture(SCREEN_TEXTURE, uv + vec2(0.0, 3.0 * SCREEN_PIXEL_SIZE.y)).xyz * 0.12;
+    col += texture(SCREEN_TEXTURE, uv + vec2(0.0, 3.0 * -SCREEN_PIXEL_SIZE.y)).xyz * 0.12;
+    col += texture(SCREEN_TEXTURE, uv + vec2(0.0, 4.0 * SCREEN_PIXEL_SIZE.y)).xyz * 0.09;
+    col += texture(SCREEN_TEXTURE, uv + vec2(0.0, 4.0 * -SCREEN_PIXEL_SIZE.y)).xyz * 0.09;
+    col += texture(SCREEN_TEXTURE, uv + vec2(0.0, 5.0 * SCREEN_PIXEL_SIZE.y)).xyz * 0.05;
+    col += texture(SCREEN_TEXTURE, uv + vec2(0.0, 5.0 * -SCREEN_PIXEL_SIZE.y)).xyz * 0.05;
+    COLOR.xyz = col;
+}"
+
+[sub_resource type="ShaderMaterial" id=27]
+shader = SubResource( 26 )
+shader_param/size = 4.131
 
 [node name="GUI" type="Control"]
 anchor_right = 1.0
@@ -644,10 +922,11 @@ mouse_filter = 2
 color = Color( 0, 0, 0, 0 )
 
 [node name="login_password" type="Control" parent="."]
-anchor_top = 0.048
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 0.0799999
+margin_top = 26.0
+margin_right = 960.0
+margin_bottom = 540.0
 script = ExtResource( 10 )
 
 [node name="back" type="Panel" parent="login_password"]
@@ -661,16 +940,16 @@ mouse_filter = 2
 custom_styles/panel = SubResource( 13 )
 
 [node name="input_login" type="LineEdit" parent="login_password"]
-anchor_left = 0.116146
-anchor_top = 0.624514
-anchor_right = 0.367188
-anchor_bottom = 0.688716
-margin_right = -0.000488281
+anchor_left = 0.117
+anchor_top = 0.619
+anchor_right = 0.117
+anchor_bottom = 0.619
+margin_left = -113.14
+margin_top = -331.426
+margin_right = 244.86
+margin_bottom = -295.426
 max_length = 20
 placeholder_text = "1234"
-__meta__ = {
-"_edit_use_anchors_": true
-}
 
 [node name="text" type="Label" parent="login_password/input_login"]
 margin_top = -24.0
@@ -679,11 +958,14 @@ margin_bottom = -1.0
 text = "Input login"
 
 [node name="input_password" type="LineEdit" parent="login_password"]
-anchor_left = 0.116146
-anchor_top = 0.749027
-anchor_right = 0.367188
-anchor_bottom = 0.81323
-margin_right = -0.000549316
+anchor_left = 0.116
+anchor_top = 0.734889
+anchor_right = 0.116
+anchor_bottom = 0.734889
+margin_left = -111.22
+margin_top = -389.573
+margin_right = 246.78
+margin_bottom = -353.573
 secret = true
 placeholder_text = "1234"
 __meta__ = {
@@ -703,11 +985,11 @@ anims/lp_off = SubResource( 18 )
 anims/lp_on = SubResource( 19 )
 
 [node name="name" type="Label" parent="login_password"]
-anchor_left = 0.115625
-anchor_top = 0.38716
-anchor_right = 0.547917
-anchor_bottom = 0.538911
-margin_right = 3.05176e-05
+anchor_left = 0.0557292
+anchor_top = 0.203985
+anchor_right = 0.280729
+anchor_bottom = 0.278889
+margin_bottom = -0.949493
 custom_fonts/font = SubResource( 20 )
 text = "Godossender"
 __meta__ = {
@@ -716,19 +998,10 @@ __meta__ = {
 
 [node name="sign" type="Button" parent="login_password"]
 margin_left = 112.0
-margin_top = 429.0
+margin_top = 431.0
 margin_right = 186.0
-margin_bottom = 462.0
+margin_bottom = 464.0
 text = "Sign in"
-
-[node name="options" type="Control" parent="."]
-visible = false
-anchor_top = 0.0481481
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": true
-}
 
 [node name="accept" type="Control" parent="."]
 visible = false
@@ -843,6 +1116,7 @@ rect_pivot_offset = Vector2( 15, 15 )
 texture = ExtResource( 3 )
 
 [node name="button_settings" type="Button" parent="root_container/main_container/functional_menu/back"]
+unique_name_in_owner = true
 anchor_left = 0.5
 anchor_top = 0.953
 anchor_right = 0.5
@@ -852,6 +1126,9 @@ margin_top = -77.842
 margin_right = 15.0
 margin_bottom = -47.842
 custom_styles/normal = SubResource( 9 )
+toggle_mode = true
+shortcut_in_tooltip = false
+shortcut = SubResource( 37 )
 
 [node name="texture" type="TextureRect" parent="root_container/main_container/functional_menu/back/button_settings"]
 anchor_right = 1.0
@@ -990,6 +1267,58 @@ margin_right = 633.0
 margin_bottom = 499.0
 rect_min_size = Vector2( 0, 60 )
 
+[node name="options" type="Control" parent="."]
+anchor_top = 0.0481481
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="o_animation" type="AnimationPlayer" parent="options"]
+playback_speed = 3.0
+anims/RESET = SubResource( 32 )
+anims/off = SubResource( 33 )
+anims/on = SubResource( 34 )
+
+[node name="Panel" type="Panel" parent="options"]
+margin_left = 50.0
+margin_top = -3.0
+margin_right = 960.0
+margin_bottom = 512.0
+custom_styles/panel = SubResource( 28 )
+
+[node name="shader" type="ColorRect" parent="options/Panel"]
+material = SubResource( 27 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="options"]
+anchor_left = 0.0864583
+anchor_top = 0.159533
+anchor_right = 0.526042
+anchor_bottom = 0.875486
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="options/ScrollContainer"]
+margin_right = 422.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+
+[node name="theme_text" type="Label" parent="options/ScrollContainer/VBoxContainer"]
+margin_right = 422.0
+margin_bottom = 23.0
+text = "Theme"
+
+[node name="theme_settings" type="OptionButton" parent="options/ScrollContainer/VBoxContainer"]
+margin_top = 27.0
+margin_right = 422.0
+margin_bottom = 50.0
+
 [connection signal="finish_animated" from="login_password" to="." method="_on_login_password_animated"]
 [connection signal="login_passed" from="login_password" to="." method="_on_login_password_authorized"]
 [connection signal="animation_finished" from="login_password/lp_animation" to="login_password" method="_on_lp_animation_finished"]
@@ -999,3 +1328,5 @@ rect_min_size = Vector2( 0, 60 )
 [connection signal="animated_hide" from="root_container/main_container" to="." method="_on_main_container_animated_hide"]
 [connection signal="animation_finished" from="root_container/main_container/main_animation" to="root_container/main_container" method="_on_main_animation_finished"]
 [connection signal="pressed" from="root_container/main_container/functional_menu/back/button_logout" to="." method="_on_button_logout_pressed"]
+[connection signal="toggled" from="root_container/main_container/functional_menu/back/button_settings" to="options" method="_on_button_settings_toggled"]
+[connection signal="item_selected" from="options/ScrollContainer/VBoxContainer/theme_settings" to="options" method="_on_theme_settings_item_selected"]
