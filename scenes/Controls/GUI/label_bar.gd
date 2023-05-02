@@ -3,6 +3,8 @@ extends Control
 var is_following: bool = false
 var position: Vector2 = Vector2.ZERO
 
+onready var button_exit = $"%button_exit"
+
 func _on_label_bar_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.get_button_index() == 1:
@@ -16,3 +18,4 @@ func _on_label_bar_gui_input(event):
 
 func _on_button_exit_pressed():
 	Global.save_and_exit()
+

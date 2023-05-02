@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://global/icon/userdefault-icon.png" type="Texture" id=1]
+[ext_resource path="res://global/font/nunito/static/Nunito-Medium.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scenes/Controls/InfoButton/ichat.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=2]
+size = 10
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=1]
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="ichat" type="Label"]
+margin_right = 632.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 3 )
+
+[node name="status" type="Label" parent="."]
+anchor_top = 0.667
+anchor_bottom = 0.667
+margin_left = 53.0
+margin_top = -7.02
+margin_right = 199.0
+margin_bottom = 6.98
+custom_fonts/font = SubResource( 2 )
+text = "Online"
+autowrap = true
+clip_text = true
+
+[node name="nickname" type="Label" parent="."]
+anchor_top = 0.358
+anchor_bottom = 0.358
+margin_left = 53.0
+margin_top = -11.48
+margin_right = 113.0
+margin_bottom = 11.52
+custom_fonts/font = SubResource( 1 )
+text = "Zanozka"
+
+[node name="user_icon" type="TextureRect" parent="."]
+anchor_top = 0.476
+anchor_bottom = 0.476
+margin_left = 16.0
+margin_top = -11.982
+margin_right = 40.0
+margin_bottom = 12.018
+texture = ExtResource( 1 )
+expand = true

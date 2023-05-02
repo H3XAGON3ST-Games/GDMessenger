@@ -1,5 +1,7 @@
 extends Node
 
+const version : String = "0.0.2"
+
 func save_data():
 	print("save data")
 
