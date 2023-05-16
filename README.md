@@ -1,4 +1,4 @@
-# Godossenger
+# GMessenger
 Open Sourse Server-Client Messenger on Godot 3 for PC 
 
 ![image](https://user-images.githubusercontent.com/83023800/235797717-3c740250-baf6-4601-b2fb-6c266e3cb7ed.png)
