@@ -10,9 +10,7 @@ func _ready(): # Проверка условия для выбора нужно�
 		add_scene(server_scene)
 		return
 	add_scene(client_scene)
-	
 	Global.gui = get_child(0)
-	print(Global.gui)
 
 func add_scene(scene: PackedScene): # Добавление сцены в дерево
 	if scene == null:  # Проверка на наличие сцены

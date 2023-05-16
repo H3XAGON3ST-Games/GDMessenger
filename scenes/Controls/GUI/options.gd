@@ -12,6 +12,7 @@ const color_list := {
 
 func _ready():
 	_configure_theme_settings()
+	Global.SERVER_IP = $ScrollContainer/VBoxContainer/sip.text
 
 func _configure_theme_settings():
 	theme_settings.add_item("Default", 0)
