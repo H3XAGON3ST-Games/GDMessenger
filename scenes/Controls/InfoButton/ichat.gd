@@ -1,7 +1,8 @@
 extends Label
-
+class_name ichat
 
 onready var status_label = $status
+onready var nickname_label = $nickname
 
 enum ICHAT_STATUS {
 	ONLINE, 

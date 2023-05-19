@@ -6,13 +6,11 @@
 [ext_resource path="res://global/icon/close-icon.png" type="Texture" id=4]
 [ext_resource path="res://global/icon/settings-icon.png" type="Texture" id=5]
 [ext_resource path="res://global/font/santello/SANTELLO.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://scenes/Controls/ChatButton/bchat.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Controls/InfoButton/ichat.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Controls/GUI/GUI.gd" type="Script" id=9]
 [ext_resource path="res://scenes/Controls/GUI/login_password.gd" type="Script" id=10]
 [ext_resource path="res://scenes/Controls/GUI/main_container.gd" type="Script" id=11]
 [ext_resource path="res://scenes/Controls/GUI/options.gd" type="Script" id=12]
-[ext_resource path="res://scenes/Controls/message_text/message_text.tscn" type="PackedScene" id=13]
 [ext_resource path="res://global/icon/send-icon.png" type="Texture" id=14]
 
 [sub_resource type="StyleBoxFlat" id=35]
@@ -695,6 +693,12 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 corner_detail = 4
 
+[sub_resource type="InputEventAction" id=43]
+action = "ui_enter"
+
+[sub_resource type="ShortCut" id=42]
+shortcut = SubResource( 43 )
+
 [sub_resource type="Animation" id=32]
 length = 0.001
 tracks/0/type = "bezier"
@@ -950,7 +954,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = SubResource( 1 )
 script = ExtResource( 9 )
-max_count = 15
+max_count = 10
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 960.0
@@ -959,7 +963,6 @@ mouse_filter = 2
 color = Color( 0, 0, 0, 0 )
 
 [node name="login_password" type="Control" parent="."]
-visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -976,6 +979,13 @@ margin_bottom = -0.0660095
 mouse_filter = 2
 custom_styles/panel = SubResource( 13 )
 
+[node name="error" type="Label" parent="login_password/back"]
+margin_left = 421.0
+margin_top = 437.0
+margin_right = 467.0
+margin_bottom = 460.0
+custom_colors/font_color = Color( 0.972549, 0.270588, 0.270588, 1 )
+
 [node name="input_login" type="LineEdit" parent="login_password"]
 anchor_left = 0.117
 anchor_top = 0.619
@@ -985,14 +995,13 @@ margin_left = -0.82
 margin_top = 0.97699
 margin_right = 357.18
 margin_bottom = 36.977
-max_length = 20
-placeholder_text = "1234"
+max_length = 60
 
 [node name="text" type="Label" parent="login_password/input_login"]
 margin_top = -24.0
 margin_right = 83.0
 margin_bottom = -1.0
-text = "Input login"
+text = "Enter login"
 
 [node name="input_password" type="LineEdit" parent="login_password"]
 anchor_left = 0.116
@@ -1003,14 +1012,14 @@ margin_left = 0.139999
 margin_top = 5.06241
 margin_right = 358.14
 margin_bottom = 41.0624
+max_length = 60
 secret = true
-placeholder_text = "1234"
 
 [node name="text" type="Label" parent="login_password/input_password"]
 margin_top = -24.0
 margin_right = 83.0
 margin_bottom = -1.0
-text = "Input password"
+text = "Enter password"
 
 [node name="lp_animation" type="AnimationPlayer" parent="login_password"]
 playback_speed = 2.0
@@ -1023,14 +1032,14 @@ anchor_left = 0.111
 anchor_top = 0.416
 anchor_right = 0.111
 anchor_bottom = 0.416
-margin_left = 0.439995
+margin_left = 0.440002
 margin_top = -0.0720062
 margin_right = 388.44
 margin_bottom = 77.928
 custom_fonts/font = SubResource( 20 )
 text = "GMessenger"
 
-[node name="sign" type="Button" parent="login_password"]
+[node name="signin" type="Button" parent="login_password"]
 anchor_left = 0.117
 anchor_top = 0.834
 anchor_right = 0.117
@@ -1039,7 +1048,18 @@ margin_left = -0.320007
 margin_top = -0.17804
 margin_right = 73.68
 margin_bottom = 32.822
-text = "Sign in"
+text = "Log in"
+
+[node name="signup" type="Button" parent="login_password"]
+anchor_left = 0.399
+anchor_top = 0.834
+anchor_right = 0.399
+anchor_bottom = 0.834
+margin_left = -0.0400085
+margin_top = -0.178009
+margin_right = 86.96
+margin_bottom = 32.822
+text = "Sign Up"
 
 [node name="accept" type="Control" parent="."]
 visible = false
@@ -1238,9 +1258,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 10
 
-[node name="bchat-zanozka" parent="root_container/main_container/friends_menu/scroll_container/friends_container" instance=ExtResource( 7 )]
-margin_bottom = 50.0
-
 [node name="chat" type="Control" parent="root_container/main_container"]
 unique_name_in_owner = true
 modulate = Color( 1, 1, 1, 0 )
@@ -1281,56 +1298,18 @@ custom_styles/panel = SubResource( 16 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="root_container/main_container/chat/main_body/chat"]
 anchor_left = 0.035
-anchor_top = 0.186
+anchor_top = 0.225
 anchor_right = 0.967
 anchor_bottom = 1.014
 margin_left = -0.155001
-margin_top = 0.0899963
+margin_top = 0.124992
 margin_right = -0.111023
 margin_bottom = -0.0900269
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="root_container/main_container/chat/main_body/chat/ScrollContainer"]
 margin_right = 590.0
-margin_bottom = 104.0
 size_flags_horizontal = 3
-
-[node name="message_text" parent="root_container/main_container/chat/main_body/chat/ScrollContainer/VBoxContainer" instance=ExtResource( 13 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 590.0
-margin_bottom = 23.0
-text = ""
-message_variant = 1
-mtext = "Hi ksdfgksjhg klijsehgl jrselgkjhslgkjshflgkjsdflgglfgkifdshjgkfdjshgkfsjdhglskfdjghlfsdkjhglfsdjkghlsfdjkghlfsdkjg"
-
-[node name="message_text2" parent="root_container/main_container/chat/main_body/chat/ScrollContainer/VBoxContainer" instance=ExtResource( 13 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 27.0
-margin_right = 590.0
-margin_bottom = 50.0
-text = ""
-message_variant = 1
-mtext = "How are you?"
-
-[node name="message_text3" parent="root_container/main_container/chat/main_body/chat/ScrollContainer/VBoxContainer" instance=ExtResource( 13 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 54.0
-margin_right = 590.0
-margin_bottom = 77.0
-text = ""
-mtext = "oh hi"
-
-[node name="message_text4" parent="root_container/main_container/chat/main_body/chat/ScrollContainer/VBoxContainer" instance=ExtResource( 13 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 81.0
-margin_right = 590.0
-margin_bottom = 104.0
-text = ""
-mtext = "i'm fine"
 
 [node name="input" type="Control" parent="root_container/main_container/chat/main_body"]
 margin_top = 439.0
@@ -1358,6 +1337,9 @@ margin_left = -0.296021
 margin_top = -17.5
 margin_right = 36.704
 margin_bottom = 17.5
+focus_mode = 0
+shortcut_in_tooltip = false
+shortcut = SubResource( 42 )
 
 [node name="TextureRect" type="TextureRect" parent="root_container/main_container/chat/main_body/input/Button"]
 anchor_right = 1.0
@@ -1410,7 +1392,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="options/ScrollContainer"]
 margin_right = 422.0
-margin_bottom = 104.0
+margin_bottom = 158.0
 size_flags_horizontal = 3
 
 [node name="theme_text" type="Label" parent="options/ScrollContainer/VBoxContainer"]
@@ -1427,23 +1409,47 @@ margin_bottom = 50.0
 margin_top = 54.0
 margin_right = 422.0
 margin_bottom = 77.0
-text = "IP Adreess"
+text = "IP Adress Server"
 
 [node name="sip" type="LineEdit" parent="options/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
 margin_top = 81.0
 margin_right = 422.0
 margin_bottom = 104.0
 text = "192.168.1.2"
 
+[node name="server_port" type="Label" parent="options/ScrollContainer/VBoxContainer"]
+margin_top = 108.0
+margin_right = 422.0
+margin_bottom = 131.0
+text = "Port Server"
+
+[node name="sport" type="LineEdit" parent="options/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 135.0
+margin_right = 422.0
+margin_bottom = 158.0
+text = "2000"
+
+[connection signal="authorized" from="." to="." method="_on_GUI_authorized"]
+[connection signal="authorized" from="." to="login_password" method="_on_client_authorized"]
+[connection signal="chat_list" from="." to="root_container/main_container" method="_on_GUI_chat_list"]
+[connection signal="disconnected" from="." to="." method="_on_client_disconnected"]
+[connection signal="host_shutdown" from="." to="." method="_on_host_shutdown"]
+[connection signal="message" from="." to="." method="_on_GUI_message"]
+[connection signal="message_list" from="." to="." method="_on_GUI_message_list"]
+[connection signal="unauthorized" from="." to="login_password" method="_on_client_unauthorized"]
 [connection signal="finish_animated" from="login_password" to="." method="_on_login_password_animated"]
-[connection signal="login_passed" from="login_password" to="." method="_on_login_password_authorized"]
+[connection signal="login_signup_passed" from="login_password" to="." method="_on_login_signup_passed"]
 [connection signal="animation_finished" from="login_password/lp_animation" to="login_password" method="_on_lp_animation_finished"]
-[connection signal="pressed" from="login_password/sign" to="login_password" method="_on_sign_pressed"]
+[connection signal="pressed" from="login_password/signin" to="login_password" method="_on_signin_pressed"]
+[connection signal="pressed" from="login_password/signup" to="login_password" method="_on_signup_pressed"]
 [connection signal="gui_input" from="root_container/top_bar/label_bar" to="root_container/top_bar/label_bar" method="_on_label_bar_gui_input"]
 [connection signal="pressed" from="root_container/top_bar/system_buttons/button_exit" to="root_container/top_bar/label_bar" method="_on_button_exit_pressed"]
 [connection signal="animated_hide" from="root_container/main_container" to="." method="_on_main_container_animated_hide"]
 [connection signal="animation_finished" from="root_container/main_container/main_animation" to="root_container/main_container" method="_on_main_animation_finished"]
 [connection signal="pressed" from="root_container/main_container/functional_menu/back/button_logout" to="." method="_on_button_logout_pressed"]
 [connection signal="toggled" from="root_container/main_container/functional_menu/back/button_settings" to="options" method="_on_button_settings_toggled"]
+[connection signal="text_entered" from="root_container/main_container/chat/main_body/input/input_text" to="." method="_on_input_text_text_entered"]
 [connection signal="pressed" from="root_container/main_container/chat/main_body/input/Button" to="." method="_on_Button_pressed"]
 [connection signal="item_selected" from="options/ScrollContainer/VBoxContainer/theme_settings" to="options" method="_on_theme_settings_item_selected"]

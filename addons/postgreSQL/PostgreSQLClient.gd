@@ -1757,7 +1757,7 @@ func reponce_parser(response: PoolByteArray):
 					# Once logged in, the database password and username are deleted from memory for security reasons.
 					password_global = ""
 					user_global = ""
-					
+					print("connection_established")
 					emit_signal("connection_established")
 				
 				return data_returned
