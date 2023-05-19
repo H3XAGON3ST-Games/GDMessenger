@@ -2,21 +2,6 @@ extends Control
 
 onready var console := $console
 
-const chat: Array = [1]
-
-const user_has_chat := {
-	1 : ["h3xa", 1],
-	2 : ["test", 1], 
-	3 : ["h3xa", 2], 
-	4 : ["test", 2]
-}
-
-const chat_has_message := {
-	1 : ["h3xa", 1, "да", 1],
-	2 : ["h3xa", 1, "тоже да", 2], 
-	3 : ["test", 1, "че да", 3]
-}
-
 var _server := WebSocketServer.new()
 var _use_multiplayer = false
 var _clients = {}
