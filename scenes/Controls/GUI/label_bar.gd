@@ -19,3 +19,7 @@ func _on_label_bar_gui_input(event):
 func _on_button_exit_pressed():
 	Global.save_and_exit()
 
+
+
+func _on_button_minimize_pressed():
+	OS.window_minimized = true

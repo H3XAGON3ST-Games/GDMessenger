@@ -50,6 +50,7 @@ func del_all_message_text():
 
 func set_disable_all_friends_bchat(value: bool):
 	for node in friends_container.get_children():
+		print(node, value)
 		node.disabled = value
 
 func set_top_chat_info(nickname, status):

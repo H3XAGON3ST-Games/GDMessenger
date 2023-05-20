@@ -143,9 +143,16 @@ func match_action(id):
 			var chat_list = database_instance.get_chat_list(_clients[id]["nickname"])
 			var request: String = Global.separator + "chat_list" + Global.separator
 			print(chat_list)
+			
+			var is_loop_skipped = true
 			for chat in chat_list:
 				request += "%s%s%s%s" % [chat[0], "┗┣┗", chat[1], "┓┫┓"]
-			request.erase(request.length() - 3, 3)
+				is_loop_skipped = false
+			
+			print(is_loop_skipped)
+			if !is_loop_skipped: 
+				request.erase(request.length() - 3, 3)
+			
 			print(request)
 			send_to_person(id, request)
 #			for user in user_has_chat:
@@ -157,11 +164,33 @@ func match_action(id):
 #			database_instance.get_chat_list("")
 			var message_list = database_instance.get_messages_from_chat(command_text[2])
 			var request: String = Global.separator + "chat_data" + Global.separator
+			var is_loop_skipped = true
 			for message in message_list:
-				request += "%s%s%s%s%s%s" % [message[0], "┗┣┗", message[1], "┗┣┗", message[2], "┓┫┓"]
+				request += "%s%s%s%s" % [message[0], "┗┣┗", message[1], "┓┫┓"]
 			request.erase(request.length() - 3, 3)
+			if is_loop_skipped:
+				request.erase(request.length() - 1, 1)
 			print(request)
 			send_to_person(id, request)
+		"set_chat": 
+			if !database_instance.is_user_there(nickname_person):
+				print("user_not_found")
+				return
+			
+			var nickname_list: Array = [_clients[id]["nickname"], nickname_person]
+			var chat_list = database_instance.get_chat_from_nicknames(nickname_list)
+			var request: String
+			
+			if chat_list.empty():
+				request = Global.separator + "set_chat" + Global.separator
+				
+				var chat_id: String = _clients[id]["nickname"] + "_" + nickname_person
+				
+				database_instance.set_chat(chat_id, nickname_list)
+				send_to_person(id, request + "%s%s%s" % [nickname_person, "┗┣┗", chat_id])
+				send_to_person(nickname_person, request + "%s%s%s" % [_clients[id]["nickname"], "┗┣┗", chat_id])
+				return
+			print("user has a chat")
 
 func send_to_person(id_person, data):
 	if _clients.has(id_person):
@@ -202,5 +231,4 @@ func write_text(text):
 #func kill__server():
 #	pass
 # create / kill end
-
 

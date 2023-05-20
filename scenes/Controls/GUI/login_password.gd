@@ -9,6 +9,9 @@ func _ready():
 	play_animation("RESET")
 	yield($lp_animation, "animation_finished")
 	play_animation("lp_on")
+	$input_login.text = Global.login
+	$input_password.text = Global.password
+	$signin/CheckBox.pressed = Global.remember_me
 
 func play_animation(anim_name: String): 
 #	if !Global.on_start_screen:
@@ -49,12 +52,32 @@ func _on_signin_pressed():
 	
 	emit_signal("login_signup_passed")
 
+
 func _on_signup_pressed():
-	if !set_data_to_global():
-		return
-	Global.variant_connect = "signup"
+	pass
+
+onready var progress := $signup/ProgressBar
+onready var signup := $signup
+
+func signup_checked(delta) -> bool:
+	if signup.pressed == true:
+		progress.value += 100 * delta
+	else:
+		progress.value -= 100 * delta
 	
-	emit_signal("login_signup_passed")
+	if progress.value >= 100:
+		signup.disabled = true
+		return true
+	return false
+
+func _process(delta):
+	if signup_checked(delta):
+		if !set_data_to_global():
+			signup.disabled = false
+			return 
+		Global.variant_connect = "signup"
+		emit_signal("login_signup_passed")
+	
 
 func _on_client_authorized(boolean):
 	Global.is_authorized = boolean
@@ -79,3 +102,5 @@ onready var error_text := $back/error
 func set_error_text(text = ""):
 	error_text.text = text
 
+func _on_CheckBox_toggled(button_pressed):
+	Global.remember_me = button_pressed

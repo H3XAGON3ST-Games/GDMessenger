@@ -64,15 +64,16 @@ signal message(nickname, text)
 signal authorized(boolean)
 signal unauthorized()
 signal chat_list(name_chat, chat_id)
-signal message_list(id_user, message_text, id_message)
+signal message_list(id_user, message_text)
 func match_action(text: String):
 	var command_text = text.split(Global.separator)
 	
-	var nickname_person = int(command_text[0])
+	var nickname_person = command_text[0]
 	var action = command_text[1]
 	match action: 
 		"message":
-			emit_signal("message", nickname_person, command_text[2])
+			if nickname_person == Global.username_state:
+				emit_signal("message", nickname_person, command_text[2])
 		"authorized":
 			emit_signal("authorized", true)
 			send_data(Global.separator + "get_chat_list", 1)
@@ -80,16 +81,23 @@ func match_action(text: String):
 		"unauthorized":
 			emit_signal("unauthorized")
 		"chat_data":
+			Global.gui.main_container.set_disable_all_friends_bchat(false)
+			if !command_text.has(2):
+				return
 			var message_list: PoolStringArray = command_text[2].split("┓┫┓")
 			for elements in message_list:
 				var message: PoolStringArray = elements.split("┗┣┗")
 				print(message)
-				emit_signal("message_list", message[0], message[1], message[2])
+				emit_signal("message_list", message[0], message[1])
 		"chat_list":
 			var chat_list: PoolStringArray = command_text[2].split("┓┫┓")
 			for elements in chat_list:
 				var chat: PoolStringArray = elements.split("┗┣┗")
 				emit_signal("chat_list", chat[0], chat[1])
+		"set_chat":
+			var chat: PoolStringArray = command_text[2].split("┗┣┗")
+			emit_signal("chat_list", chat[0], chat[1])
+			
 
 
 func _client_received(_p_id = 1):
@@ -112,7 +120,7 @@ func disconnect_from_host():
 	emit_signal("host_shutdown")
 
 
-func send_data(data, dest):
+func send_data(data, dest = 1):
 	_client.get_peer(1).set_write_mode(_write_mode)
 	_client.get_peer(1).put_packet(Global.encode_data(data, _write_mode))
 

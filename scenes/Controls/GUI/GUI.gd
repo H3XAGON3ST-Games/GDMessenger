@@ -34,7 +34,9 @@ func _ready():
 	
 	info_text.text = "Messenger"
 	
+	Global.gui = self
 	
+	options._on_theme_settings_item_selected(Global.theme)
 #	configure_client()
 
 func configure_shortcut_esc():
@@ -91,6 +93,7 @@ func _on_main_container_animated_hide():
 	set_visible_main_gui(false)
 	main_container.del_all_friends_bchat()
 	main_container.get_node("chat/main_body").visible = false
+	login_password.signup.disabled = false
 	login_password.play_animation("lp_on")
 
 func disconnecting():
@@ -137,9 +140,17 @@ func _on_Button_pressed():
 func _on_input_text_text_entered(new_text):
 	_on_Button_pressed()
 
-func _on_GUI_message_list(id_user, message_text, id_message):
-	main_container.set_disable_all_friends_bchat(false)
+func _on_GUI_message_list(id_user, message_text):
 	if Global.login == id_user:
 		create_message(message_text, Message.MESSAGE_VARIANT.FROM_CLIENT)
 		return
 	create_message(message_text, Message.MESSAGE_VARIANT.FOR_CLIENT)
+
+
+func _on_add_chat_text_entered(new_text):
+	var send_message_data := "%s%s%s" % [new_text, Global.separator, "set_chat"]
+	send_data(send_message_data)
+	$root_container/main_container/friends_menu/back/add_chat.text = ""
+
+func _on_enter_pressed():
+	_on_add_chat_text_entered($root_container/main_container/friends_menu/back/add_chat.text)

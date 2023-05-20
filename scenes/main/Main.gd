@@ -1,6 +1,6 @@
 extends Node
 
-export var is_server : bool = false
+var is_server : bool = Global.is_server
 
 export var client_scene : PackedScene # Загруженная сцена клиента
 export var server_scene : PackedScene # Загруженная сцена сервера
@@ -10,7 +10,7 @@ func _ready(): # Проверка условия для выбора нужно�
 		add_scene(server_scene)
 		return
 	add_scene(client_scene)
-	Global.gui = get_child(0)
+#	Global.gui = get_child(0)
 
 func add_scene(scene: PackedScene): # Добавление сцены в дерево
 	if scene == null:  # Проверка на наличие сцены
