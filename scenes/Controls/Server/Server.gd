@@ -164,12 +164,13 @@ func match_action(id):
 #			database_instance.get_chat_list("")
 			var message_list = database_instance.get_messages_from_chat(command_text[2])
 			var request: String = Global.separator + "chat_data" + Global.separator
-			var is_loop_skipped = true
+			var is_loop_skipped = false
 			for message in message_list:
 				request += "%s%s%s%s" % [message[0], "┗┣┗", message[1], "┓┫┓"]
-			request.erase(request.length() - 3, 3)
+				is_loop_skipped = true
 			if is_loop_skipped:
-				request.erase(request.length() - 1, 1)
+				request.erase(request.length() - 3, 3)
+				
 			print(request)
 			send_to_person(id, request)
 		"set_chat": 
@@ -231,4 +232,5 @@ func write_text(text):
 #func kill__server():
 #	pass
 # create / kill end
+
 

@@ -82,10 +82,10 @@ func match_action(text: String):
 			emit_signal("unauthorized")
 		"chat_data":
 			Global.gui.main_container.set_disable_all_friends_bchat(false)
-			if !command_text.has(2):
-				return
 			var message_list: PoolStringArray = command_text[2].split("┓┫┓")
 			for elements in message_list:
+				if elements.empty(): 
+					return
 				var message: PoolStringArray = elements.split("┗┣┗")
 				print(message)
 				emit_signal("message_list", message[0], message[1])
