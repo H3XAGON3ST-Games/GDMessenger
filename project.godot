@@ -43,7 +43,8 @@ run/main_scene="res://scenes/main/Main.tscn"
 run/low_processor_mode=true
 boot_splash/show_image=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
-config/icon="res://icon.png"
+config/icon="res://logo messenger.png"
+config/windows_native_icon="res://logo-messenger.ico"
 
 [autoload]
 
