@@ -1,6 +1,6 @@
 extends Node
 
-const version : String = "0.2.3-beta"
+const version : String = "0.2.4-beta"
 
 var is_server: bool
 

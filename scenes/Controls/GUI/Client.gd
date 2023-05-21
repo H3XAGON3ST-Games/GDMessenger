@@ -92,12 +92,14 @@ func match_action(text: String):
 		"chat_list":
 			var chat_list: PoolStringArray = command_text[2].split("┓┫┓")
 			for elements in chat_list:
+				if elements.empty(): 
+					return
 				var chat: PoolStringArray = elements.split("┗┣┗")
 				emit_signal("chat_list", chat[0], chat[1])
 		"set_chat":
 			var chat: PoolStringArray = command_text[2].split("┗┣┗")
 			emit_signal("chat_list", chat[0], chat[1])
-			
+			print(chat)
 
 
 func _client_received(_p_id = 1):

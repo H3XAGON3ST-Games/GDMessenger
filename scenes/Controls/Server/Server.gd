@@ -189,7 +189,9 @@ func match_action(id):
 				
 				database_instance.set_chat(chat_id, nickname_list)
 				send_to_person(id, request + "%s%s%s" % [nickname_person, "┗┣┗", chat_id])
-				send_to_person(nickname_person, request + "%s%s%s" % [_clients[id]["nickname"], "┗┣┗", chat_id])
+				
+				if _nickname_to_id.has(nickname_person):
+					send_to_person(_nickname_to_id[nickname_person], request + "%s%s%s" % [_clients[id]["nickname"], "┗┣┗", chat_id])
 				return
 			print("user has a chat")
 
