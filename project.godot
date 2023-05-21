@@ -55,6 +55,8 @@ Global="*res://global/singleton/Global.gd"
 window/size/width=960
 window/size/height=540
 window/size/borderless=true
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [gui]
 

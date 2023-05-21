@@ -28,7 +28,7 @@ func _ready():
 	
 	OS.window_borderless = false
 	
-	var supported_protocols = PoolStringArray(["my-protocol", "binary"])
+	var supported_protocols = PoolStringArray(["TCP", "binary"])
 	listen(Global.SERVER_PORT, supported_protocols, _use_multiplayer)
 	
 	write_text("Server has been started on:")

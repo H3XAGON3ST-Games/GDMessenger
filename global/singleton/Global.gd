@@ -1,8 +1,8 @@
 extends Node
 
-const version : String = "0.2.2-beta"
+const version : String = "0.2.3-beta"
 
-var is_server: bool = false
+var is_server: bool
 
 var separator: = "@#/."
 var SERVER_PORT: int = 2000
@@ -50,6 +50,44 @@ func reload_app():
 
 
 func _init():
+	init_global_config()
+	if is_server:
+		init_server_config()
+
+
+var DB_USER := "postgres"
+var DB_PASSWORD := "04065665"
+var DB_HOST := "localhost"
+var DB_PORT := 5432 # Default postgres port
+var DB_DATABASE := "gmessenger" # Database name
+
+func init_server_config():
+	var config = ConfigFile.new()
+	var err = config.load("res://db_setting.cfg")
+	if err == OK: 
+		DB_USER = config.get_value("db_setting", "DB_USER")
+		
+		DB_PASSWORD = config.get_value("db_setting", "DB_PASSWORD")
+		
+		DB_HOST = config.get_value("db_setting", "DB_HOST")
+		
+		DB_PORT = config.get_value("db_setting", "DB_PORT")
+		
+		DB_DATABASE = config.get_value("db_setting", "DB_DATABASE_NAME")
+	else: 
+		config.set_value("db_setting", "DB_USER", DB_USER)
+		
+		config.set_value("db_setting", "DB_PASSWORD", DB_PASSWORD)
+		
+		config.set_value("db_setting", "DB_HOST", DB_HOST)
+		
+		config.set_value("db_setting", "DB_PORT", DB_PORT)
+		
+		config.set_value("db_setting", "DB_DATABASE_NAME", DB_DATABASE)
+		config.save("res://db_setting.cfg")
+
+
+func init_global_config():
 	var config = ConfigFile.new()
 	var err = config.load("res://setting.cfg")
 	if err == OK: 
@@ -84,10 +122,7 @@ func _init():
 		theme = 0
 		SERVER_IP = "localhost"
 		SERVER_PORT = 2000
-		
-
-func _ready():
-	pass
+		config.save("res://setting.cfg")
 
 
 func save_data():

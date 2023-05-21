@@ -6,7 +6,7 @@ var _client = WebSocketClient.new()
 var _write_mode = WebSocketPeer.WRITE_MODE_BINARY
 
 func connect_to_server(): 
-	var supported_protocols = PoolStringArray(["my-protocol2", "my-protocol", "binary"])
+	var supported_protocols = PoolStringArray(["TCP"])
 	var err = _client.connect_to_url(Global.SERVER_IP + ":" + str(Global.SERVER_PORT), supported_protocols, false)
 	if !err == OK:
 		emit_signal("authorized", false)
