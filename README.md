@@ -12,6 +12,6 @@
 1. Install PostgreSQL
 2. Set up a postgre user and create a database for the application
 3. Make CREATE TABLE, ALTER TABLE and CREATE FUNCTION queries to the database from the gmessenger.sql file
-4. Run GD Messenger to create a configuration file settings.cfg and enable the server status via is_server=true
+4. Run GDMessenger to create a configuration file settings.cfg and enable the server status via is_server=true
 5. Restart GDMessenger to create a db_setting.cfg configuration file and enter the database data (login, password, host, port, database name)
 6. Restart GDMessenger to run server 
