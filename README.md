@@ -7,3 +7,8 @@
 ![image](https://github.com/H3XAGON3ST-Games/GDMessenger/assets/83023800/1bb13dcb-a07c-472a-a62f-32736ba28ee0)
 
 ![image](https://github.com/H3XAGON3ST-Games/GDMessenger/assets/83023800/a1e4e709-cfb3-4732-bc7c-69b6efb21111)
+
+The application requires:
+1. Install PostgreSQL
+2. Set up a postgre user and create a database for the application.
+3. Make CREATE TABLE, ALTER TABLE and CREATE FUNCTION queries to the database from the gmessenger.sql file
