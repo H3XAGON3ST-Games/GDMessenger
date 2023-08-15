@@ -1,7 +1,17 @@
 # GDMessenger
 ![image](https://github.com/H3XAGON3ST-Games/GDMessenger/assets/83023800/ddf06f43-c025-4182-81ae-8ecc3280b4c7)
 
-## Open Sourse Server-Client Messenger on Godot 3 for PC 
+## The future of the project:
+1. Data transfer refactoring (and add data security)
+2. Database refactoring
+3. Client and Server code refactoring
+4. Adding Groups
+5. Gui improvement
+6. Adding a cache for storing messages and other things
+7. Adding the ability to send videos and pictures (and maybe a gif as file and url)
+8. Profile improvment and add custom data about user (such as pictures profile or "about me")
+
+## Open Sourse Server-Client Messenger on Godot 3.5 for PC 
 ![image](https://github.com/H3XAGON3ST-Games/GDMessenger/assets/83023800/39be0e9b-e8a1-4a12-9f12-623d712071db)
 
 ![image](https://github.com/H3XAGON3ST-Games/GDMessenger/assets/83023800/1bb13dcb-a07c-472a-a62f-32736ba28ee0)
