@@ -6,6 +6,5 @@
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
-is_server_override = 2
 client_scene = ExtResource( 2 )
 server_scene = ExtResource( 3 )

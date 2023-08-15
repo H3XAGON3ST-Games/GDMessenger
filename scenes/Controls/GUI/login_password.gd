@@ -24,16 +24,14 @@ func _on_lp_animation_finished(anim_name):
 		"lp_on": 
 			Global.gui.set_authorize_state(false)
 		"lp_off": 
-#			Global.on_start_screen = false
 			yield(get_tree().create_timer(5.0), "timeout")
 			if Global.was_authorized:
 				Global.was_authorized = false
 				unauthorized = false
 				return
 			if !Global.is_authorized and !unauthorized:
-#				_on_client_authorized(false)
-				set_error_text("Timeout exceeded")
-				print("unauth2", unauthorized)
+				set_error_text("Timeout exceeded") # perhaps the check is redundant
+				prints("unauth", unauthorized)
 			unauthorized = false
 
 
