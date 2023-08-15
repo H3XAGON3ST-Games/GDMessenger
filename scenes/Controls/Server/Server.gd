@@ -22,6 +22,7 @@ func _init():
 
 const database := preload("res://addons/postgreSQL/database.gd")
 var database_instance
+
 # Конфигурация сервера 
 func _ready():
 	database_instance = database.new()
@@ -199,34 +200,15 @@ func _client_receive(id):
 		get_client_info(id)
 		return
 	
-	
 	match_action(id)
 
 func send_data(data, dest):
-#	for id in _clients:
-#		_server.get_peer(id["client"]).put_packet(Global.encode_data(data, _write_mode))
 	pass
 
-# Работа с консолью
+# work with console
 func write_text(text):
 	if console.text != "":
 		console.text = console.text + '\n' + text 
 		return
 	console.text = text 
-
-
-
-# create / kill
-#func create__server():
-#	yield(get_tree().create_timer(0.05), "timeout")
-#	var _server := NetworkedMultiplayerENet.new()
-#	_server.create__server(Global._server_PORT, 4095)
-#	get_tree().set_network_peer(_server)
-#
-#	print(_server)
-#
-#func kill__server():
-#	pass
-# create / kill end
-
 

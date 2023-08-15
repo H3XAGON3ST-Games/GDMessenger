@@ -1,7 +1,7 @@
 extends Button
 
-export var nickname_text : String = "" setget set_nickname # Никнейм пользователя
-export var lmessage_text : String = "" setget set_lmessage # Последнее сообщение
+export var nickname_text : String = "" setget set_nickname # User nickname
+export var lmessage_text : String = "" setget set_lmessage # Last message
 var id_chat : String = ""
 
 func set_nickname(value): 

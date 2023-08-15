@@ -2,18 +2,38 @@ extends Node
 
 var is_server : bool = Global.is_server
 
-export var client_scene : PackedScene # Загруженная сцена клиента
-export var server_scene : PackedScene # Загруженная сцена сервера
+enum OVERRIDE_TYPE {
+	DO_NOT_OVERRIDE,
+	OVERRIDE_TRUE,
+	OVERRIDE_FALSE
+}
 
-func _ready(): # Проверка условия для выбора нужной сцены
-	if is_server: 
-		add_scene(server_scene)
-		return
-	add_scene(client_scene)
-#	Global.gui = get_child(0)
+export(OVERRIDE_TYPE) var is_server_override : int = OVERRIDE_TYPE.DO_NOT_OVERRIDE
 
-func add_scene(scene: PackedScene): # Добавление сцены в дерево
-	if scene == null:  # Проверка на наличие сцены
+export var client_scene : PackedScene # Loaded client scene
+export var server_scene : PackedScene # Loaded server scene
+
+func _ready(): # Checking the condition for selecting the desired scene
+	print(is_server_override)
+	match is_server_override: 
+		OVERRIDE_TYPE.DO_NOT_OVERRIDE:
+			print("DO_NOT_OVERRIDE")
+			if is_server: 
+				add_scene(server_scene)
+				return
+			add_scene(client_scene)
+		OVERRIDE_TYPE.OVERRIDE_TRUE:
+			print("OVERRIDE_TRUE")
+			add_scene(server_scene)
+			Global.is_server = true
+		OVERRIDE_TYPE.OVERRIDE_FALSE:
+			print("OVERRIDE_FALSE")
+			add_scene(client_scene)
+			Global.is_server = false
+	
+
+func add_scene(scene: PackedScene): # Adding a Scene to the Tree
+	if scene == null:
 		Global.save_and_exit()
 		return
 	add_child(scene.instance())

@@ -38,16 +38,9 @@ func set_username_state(nickname, id_chat):
 	gui.main_container.set_top_chat_info(nickname, ichat.ICHAT_STATUS.OFFLINE)
 	gui.send_data(separator + "get_chat_data" + separator + id_chat, 1)
 	gui.nickname_to_send = nickname
-	
-#var gui_ready := false setget set_gui_ready
-#func set_gui_ready(value):
-#	gui_ready = value
-#	gui = get_tree().get_root().get_node_or_null("GUI")
-#	print(gui)
 
 func reload_app():
 	get_tree().reload_current_scene()
-
 
 func _init():
 	init_global_config()
