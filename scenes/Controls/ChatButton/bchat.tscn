@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://global/icon/userdefault-icon.png" type="Texture" id=1]
+[ext_resource path="res://global/font/nunito/static/Nunito-Medium.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scenes/Controls/ChatButton/bchat.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=40]
+bg_color = Color( 0.482353, 0.470588, 0.560784, 0.0941176 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 4
+
+[sub_resource type="DynamicFont" id=2]
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 10
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="bchat" type="Button"]
+margin_right = 200.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 50 )
+custom_styles/disabled = SubResource( 40 )
+align = 2
+script = ExtResource( 3 )
+
+[node name="user_icon" type="TextureRect" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 8.0
+margin_top = -12.0
+margin_right = 32.0
+margin_bottom = 12.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="nickname" type="Label" parent="."]
+margin_left = 38.0
+margin_top = 7.0
+margin_right = 90.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 2 )
+
+[node name="last_message" type="Label" parent="."]
+margin_left = 38.0
+margin_top = 27.0
+margin_right = 184.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 1 )
+autowrap = true
+clip_text = true
+
+[connection signal="pressed" from="." to="." method="_on_bchat_pressed"]
