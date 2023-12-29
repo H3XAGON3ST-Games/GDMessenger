@@ -11,7 +11,7 @@
 7. Adding the ability to send videos and pictures (and maybe a gif as file and url) - Unstarted
 8. Profile improvment and add custom data about user (such as pictures profile or "about me") - Unstarted
 9. Port to android - Done
-10.Port to linux - In progress
+10. Port to linux - In progress
 
 ## Open Sourse Server-Client Messenger on Godot 3.5 for PC 
 ![image](https://github.com/H3XAGON3ST-Games/GDMessenger/assets/83023800/39be0e9b-e8a1-4a12-9f12-623d712071db)
