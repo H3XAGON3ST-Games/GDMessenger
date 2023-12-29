@@ -1,156 +1,19 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://scenes/Controls/GUI/label_bar.gd" type="Script" id=1]
-[ext_resource path="res://global/font/nunito/static/Nunito-Medium.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scenes/Controls/GUI/GUI.tres" type="Theme" id=2]
 [ext_resource path="res://global/icon/logout-icon.png" type="Texture" id=3]
 [ext_resource path="res://global/icon/close-icon.png" type="Texture" id=4]
 [ext_resource path="res://global/icon/settings-icon.png" type="Texture" id=5]
 [ext_resource path="res://global/font/santello/SANTELLO.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://global/icon/checkbuttonoff- icon.png" type="Texture" id=7]
 [ext_resource path="res://scenes/Controls/InfoButton/ichat.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Controls/GUI/GUI.gd" type="Script" id=9]
 [ext_resource path="res://scenes/Controls/GUI/login_password.gd" type="Script" id=10]
 [ext_resource path="res://scenes/Controls/GUI/main_container.gd" type="Script" id=11]
 [ext_resource path="res://scenes/Controls/GUI/options.gd" type="Script" id=12]
-[ext_resource path="res://global/icon/checkbuttonon- icon.png" type="Texture" id=13]
 [ext_resource path="res://global/icon/send-icon.png" type="Texture" id=14]
 [ext_resource path="res://global/icon/minimize-icon.png" type="Texture" id=15]
 [ext_resource path="res://global/icon/enter-icon.png" type="Texture" id=16]
-
-[sub_resource type="StyleBoxFlat" id=35]
-bg_color = Color( 0.878431, 0.372549, 0.372549, 0.290196 )
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 4
-
-[sub_resource type="StyleBoxEmpty" id=7]
-
-[sub_resource type="StyleBoxFlat" id=4]
-content_margin_left = 10.0
-content_margin_right = 10.0
-bg_color = Color( 0.482353, 0.470588, 0.560784, 0.231373 )
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 4
-
-[sub_resource type="StyleBoxFlat" id=40]
-bg_color = Color( 0.482353, 0.470588, 0.560784, 0.0941176 )
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 4
-
-[sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0.0588235, 0.0588235, 0.0588235, 0.290196 )
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 4
-
-[sub_resource type="DynamicFont" id=47]
-size = 12
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 2 )
-
-[sub_resource type="StyleBoxFlat" id=46]
-content_margin_left = 10.0
-content_margin_right = 10.0
-bg_color = Color( 0.482353, 0.470588, 0.560784, 0.0941176 )
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 4
-
-[sub_resource type="StyleBoxFlat" id=48]
-content_margin_left = 10.0
-content_margin_right = 10.0
-bg_color = Color( 0.0588235, 0.0588235, 0.0588235, 0.290196 )
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 4
-
-[sub_resource type="StyleBoxEmpty" id=25]
-
-[sub_resource type="StyleBoxFlat" id=24]
-content_margin_left = 12.0
-bg_color = Color( 0.482353, 0.470588, 0.560784, 0.0941176 )
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 4
-
-[sub_resource type="StyleBoxEmpty" id=30]
-
-[sub_resource type="StyleBoxFlat" id=29]
-content_margin_left = 12.0
-bg_color = Color( 0.482353, 0.470588, 0.560784, 0.0941176 )
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 3
-
-[sub_resource type="StyleBoxFlat" id=31]
-content_margin_left = 12.0
-bg_color = Color( 0.411765, 0.45098, 0.470588, 0.447059 )
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 3
-
-[sub_resource type="StyleBoxFlat" id=8]
-bg_color = Color( 0, 0, 0, 0.152941 )
-border_width_top = 190
-border_color = Color( 0.0941176, 0.0941176, 0.0941176, 0.152941 )
-border_blend = true
-
-[sub_resource type="StyleBoxFlat" id=49]
-content_margin_left = 5.0
-content_margin_right = 5.0
-content_margin_top = 0.0
-content_margin_bottom = 0.0
-bg_color = Color( 0.105882, 0.105882, 0.105882, 0.682353 )
-corner_detail = 4
-
-[sub_resource type="DynamicFont" id=2]
-use_filter = true
-font_data = ExtResource( 2 )
-
-[sub_resource type="Theme" id=1]
-default_font = SubResource( 2 )
-Button/styles/disabled = SubResource( 35 )
-Button/styles/focus = SubResource( 7 )
-Button/styles/hover = SubResource( 4 )
-Button/styles/normal = SubResource( 40 )
-Button/styles/pressed = SubResource( 5 )
-CheckButton/constants/check_vadjust = 0
-CheckButton/fonts/font = SubResource( 47 )
-CheckButton/icons/off = ExtResource( 7 )
-CheckButton/icons/on = ExtResource( 13 )
-CheckButton/styles/hover = SubResource( 4 )
-CheckButton/styles/hover_pressed = SubResource( 4 )
-CheckButton/styles/normal = SubResource( 46 )
-CheckButton/styles/pressed = SubResource( 48 )
-LineEdit/styles/focus = SubResource( 25 )
-LineEdit/styles/normal = SubResource( 24 )
-OptionButton/styles/focus = SubResource( 30 )
-OptionButton/styles/hover = SubResource( 29 )
-OptionButton/styles/normal = SubResource( 29 )
-OptionButton/styles/pressed = SubResource( 31 )
-Panel/styles/panel = SubResource( 8 )
-PopupMenu/styles/panel = SubResource( 49 )
 
 [sub_resource type="CanvasItemMaterial" id=50]
 blend_mode = 4
@@ -1008,7 +871,7 @@ shader_param/length_multiplier = 1.011
 [node name="GUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = SubResource( 1 )
+theme = ExtResource( 2 )
 script = ExtResource( 9 )
 max_count = 10
 
@@ -1020,6 +883,7 @@ mouse_filter = 2
 color = Color( 0, 0, 0, 0 )
 
 [node name="login_password" type="Control" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0

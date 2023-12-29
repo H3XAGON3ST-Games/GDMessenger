@@ -49,7 +49,7 @@ func _init():
 
 
 var DB_USER := "postgres"
-var DB_PASSWORD := "04065665"
+var DB_PASSWORD := "1234"
 var DB_HOST := "localhost"
 var DB_PORT := 5432 # Default postgres port
 var DB_DATABASE := "gmessenger" # Database name
